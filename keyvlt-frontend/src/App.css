@@ -1,0 +1,494 @@
+/* src/App.css */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+:root {
+  --background-color: #F9FAFB;
+  --sidebar-bg: #FFFFFF;
+  --main-bg: #F9FAFB;
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --border-color: #E5E7EB;
+  --primary-color: #3B82F6;
+  --primary-hover: #2563EB;
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body.dark-theme {
+  --background-color: #111827; /* Dark blue-gray */
+  --sidebar-bg: #1F2937;     /* Slightly lighter gray */
+  --main-bg: #111827;
+  --text-primary: #F9FAFB;   /* Off-white */
+  --text-secondary: #9CA3AF; /* Lighter gray for secondary text */
+  --border-color: #374151;   /* A subtle border color */
+}
+
+
+
+/* Add dark mode variables here later */
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* We'll add this font in index.html */
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 30%;
+  max-width: 300px;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.sidebar-header p {
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.upload-button {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.upload-button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* --- Main Content --- */
+.main-content {
+  width: 70%;
+  flex-grow: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.instructions {
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 5rem;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--sidebar-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* --- File Card --- */
+.file-card {
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+}
+
+.file-card-name {
+  font-weight: 500;
+}
+
+.download-icon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-top: 5rem;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  margin-right: 0.75rem;
+  font-size: 1.5rem; /* Make the spinner a bit bigger */
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* src/App.css */
+
+/* ... (all your existing styles) */
+
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .app-layout {
+    /* Stack the sidebar and main content vertically */
+    flex-direction: column;
+    height: auto; /* Allow the layout to grow as needed */
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: none; /* Override the desktop max-width */
+    height: auto;
+    border-right: none; /* Remove the side border */
+    border-bottom: 1px solid var(--border-color); /* Add a bottom border */
+    padding: 1.5rem;
+  }
+
+  .main-content {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .modal-content {
+    /* Give the modal a bit more space on small screens */
+    width: 95%;
+  }
+}
+
+/* src/App.css */
+
+/* ... (all your existing styles) */
+
+
+/* --- Detailed File Card --- */
+.file-card-detailed {
+  background-color: var(--sidebar-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.file-card-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  flex-shrink: 0; /* Prevents the icon from shrinking */
+}
+
+.file-card-info {
+  flex-grow: 1; /* Takes up the available space */
+  min-width: 0; /* Important for text truncation */
+}
+
+.file-card-info h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds "..." if the name is too long */
+}
+
+.file-card-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.file-card-status {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+}
+
+.file-card-actions button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.file-card-actions button:hover {
+  background-color: var(--primary-hover);
+}
+
+/* src/App.css */
+
+/* ... (after the .upload-button styles) */
+
+.button {
+  /* A base class for all buttons */
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.button-primary {
+  /* The main action button style */
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.button-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.button-secondary {
+  /* The new style for Cancel/Close buttons */
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+.button-secondary:hover {
+  background-color: var(--background-color);
+  border-color: var(--text-secondary);
+}
+
+/* src/App.css */
+
+/* REPLACE the old .instructions style with this */
+.welcome-container {
+  text-align: center;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+}
+
+.welcome-icon {
+  font-size: 5rem;
+  color: var(--primary-color);
+  opacity: 0.6;
+}
+
+.welcome-container h2 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.welcome-container p {
+  max-width: 450px; /* Keep the text from getting too wide */
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* src/App.css */
+
+/* ... (after the 'label' style) */
+
+/* NEW: Consolidated and Enhanced Input Styles */
+.input-base {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif; /* Ensure font is inherited */
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Style for file inputs */
+.input-base[type="file"] {
+  padding: 0.6rem;
+}
+
+/* Remove default browser outlines and apply our own focus style */
+.input-base:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* A soft blue glow */
+}
+
+/* A subtle effect when hovering over an input */
+.input-base:hover {
+  border-color: var(--text-secondary);
+}
+
+/* ... (before the '.button' styles) */
+
+/* src/App.css */
+
+/* ... (all your existing styles) */
+
+/* --- Auth Page Styles --- */
+.auth-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  background-color: var(--sidebar-bg);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.auth-card h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.auth-switch a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+/* src/App.css */
+
+/* ... (all your existing styles) */
+
+/* --- Main Navigation Styles --- */
+.main-nav {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--sidebar-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-button {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+.nav-button:hover {
+  background-color: var(--background-color);
+}
+
+.nav-button-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+.nav-button-primary:hover {
+  background-color: var(--primary-hover);
+  color: #fff;
+}

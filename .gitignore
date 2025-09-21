@@ -1,0 +1,14 @@
+# Python / Flask
+/keyvlt-backend/venv/
+/keyvlt-backend/__pycache__/
+/keyvlt-backend/instance/
+/keyvlt-backend/keyvlt.db
+/keyvlt-backend/.env
+
+# Node / React
+/keyvlt-frontend/node_modules/
+/keyvlt-frontend/dist/
+/keyvlt-frontend/.env
+
+# VS Code
+.vscode/

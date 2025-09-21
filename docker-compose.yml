@@ -1,0 +1,27 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./keyvlt-backend/uploads:/app/uploads
+      - ./keyvlt-backend/keyvlt.db:/app/keyvlt.db
+    environment:
+      - FLASK_APP=app.py
+    restart: always
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "8080:80" # We'll access the app on port 8080
+    depends_on:
+      - backend
+    restart: always
