@@ -7,7 +7,7 @@
 
 Upload a file, create a unique key-name like `project-kickoff-docs`, and share it. It's that simple. KeyVlt is designed for teachers, students, professionals, and anyone who needs a fast and controlled way to distribute documents.
 
-![KeyVlt Application Screenshot](https://i.imgur.com/YOUR_SCREENSHOT_URL.png)
+![KeyVlt Application Screenshot](https://github.com/Thamaraiselvan10/keyvlt/blob/main/Screenshot%202025-09-21%20222317.png)
 *(**Action:** Replace the URL above with a link to your application's screenshot.)*
 
 ---
